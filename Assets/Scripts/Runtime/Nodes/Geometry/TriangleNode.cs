@@ -38,6 +38,23 @@ namespace MiniDini.Nodes
 
             // here is where we construct the geometry for a triangle (3 points, one primitive with three indices)
             // try constructing otherwise and see if the unit tests capture the failure!
+            Point a = new();
+            a.position = editplane.up * radius;
+            Point b = new();
+            b.position = Quaternion.AngleAxis(360.0f / 3.0f, editplane.normal) * (editplane.up * radius);
+            Point c = new();
+            c.position = Quaternion.AngleAxis(-360.0f / 3.0f, editplane.normal) * (editplane.up * radius);
+            int index1 = m_geometry.AddPoint(a);
+            int index2 = m_geometry.AddPoint(b);
+            int index3 = m_geometry.AddPoint(c);
+
+            Prim p = new();
+
+            p.points.Add(index1);
+            p.points.Add(index3);
+            p.points.Add(index2);
+
+            m_geometry.AddPrim(p);
             
             return m_geometry;
         }
