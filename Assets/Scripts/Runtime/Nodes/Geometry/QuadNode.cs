@@ -40,23 +40,26 @@ namespace MiniDini.Nodes
             // try constructing otherwise and see if the unit tests capture the failure!
 
             Point a = new();
-            a.position = editplane.up*width;
+            a.position = editplane.up*height;
             Point b = new();
-            b.position = Quaternion.AngleAxis(360.0f/4.0f, editplane.normal)*(editplane.up*height);
-            Point c = new();
-            c.position = Quaternion.AngleAxis(-360.0f/4.0f, editplane.normal)*(editplane.up*width);
-            Point d = new();
-            d.position = Quaternion.AngleAxis(360.0f/4.0f, editplane.normal)*(editplane.up*height);
+            b.position = Quaternion.AngleAxis(360.0f/4.0f, editplane.normal) * (editplane.normal* width);
+            Point c = new Point();
+            c.position = Quaternion.AngleAxis(360.0f/4.0f, editplane.normal) * (editplane.up * height);
+
+            Point d = new Point();
+            d.position = Quaternion.AngleAxis(360.0f/4.0f, editplane.normal) * (editplane.right * width);
 
             int index1 = m_geometry.AddPoint(a);
             int index2 = m_geometry.AddPoint(b);
             int index3 = m_geometry.AddPoint(c);
             int index4 = m_geometry.AddPoint(d);
 
-            Prim p = new();
+            Prim p = new Prim();
+
+            
             p.points.Add(index1);
-            p.points.Add(index3);
             p.points.Add(index2);
+            p.points.Add(index3);
             p.points.Add(index4);
 
             m_geometry.AddPrim(p);
