@@ -42,12 +42,12 @@ namespace MiniDini.Nodes
             Point a = new();
             a.position = editplane.up*height;
             Point b = new();
-            b.position = Quaternion.AngleAxis(360.0f/4.0f, editplane.normal) * (editplane.normal* width);
+            b.position = editplane.right * width;
             Point c = new Point();
-            c.position = Quaternion.AngleAxis(360.0f/4.0f, editplane.normal) * (editplane.up * height);
+            c.position = editplane.down * height;
 
             Point d = new Point();
-            d.position = Quaternion.AngleAxis(360.0f/4.0f, editplane.normal) * (editplane.right * width);
+            d.position = editplane.left * width;
 
             int index1 = m_geometry.AddPoint(a);
             int index2 = m_geometry.AddPoint(b);
