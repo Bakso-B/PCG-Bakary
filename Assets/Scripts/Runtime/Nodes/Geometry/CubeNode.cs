@@ -46,13 +46,13 @@ namespace MiniDini.Nodes
             Point d = new();
             d.position = editplane.left * size;
             Point e = new();
-            e.position = (editplane.normal) * (editplane.up * size);
+            e.position = (editplane.normal) + (editplane.up * size);
             Point f = new();
-            f.position = (editplane.normal)*(editplane.right * size);
+            f.position = (editplane.normal)+(editplane.right * size);
             Point g = new();
-            g.position = (editplane.normal)*(editplane.down * size);
+            g.position = (editplane.normal)+(editplane.down * size);
             Point h = new();
-            h.position = (editplane.normal)*(editplane.left * size);
+            h.position = (editplane.normal)+(editplane.left * size);
 
             int index1 = m_geometry.AddPoint(a);
             int index2 = m_geometry.AddPoint(b);
@@ -72,23 +72,38 @@ namespace MiniDini.Nodes
             m_geometry.AddPrim(first);
 
             Prim second = new Prim();
-            second.points.Add({index5, index8, index7, index6});
+            second.points.Add(index5);
+            second.points.Add(index8);
+            second.points.Add(index7);
+            second.points.Add(index6);
             m_geometry.AddPrim(second);
 
             Prim third = new Prim();
-            third.points.Add({index1, index5, index6, index2});
+            third.points.Add(index1);
+            third.points.Add(index5);
+            third.points.Add(index6);
+            third.points.Add(index2);
             m_geometry.AddPrim(third);
 
             Prim fourth = new Prim();
-            fourth.points.Add({index4, index3, index7, index8});
+            fourth.points.Add(index4);
+            fourth.points.Add(index3);
+            fourth.points.Add(index7);
+            fourth.points.Add(index8);
             m_geometry.AddPrim(fourth);
 
             Prim fifth = new Prim();
-            fifth.points.Add({index1, index4, index8, index5});
+            fifth.points.Add(index1);
+            fifth.points.Add(index4);
+            fifth.points.Add(index8);
+            fifth.points.Add(index5);
             m_geometry.AddPrim(fifth);
 
             Prim sixth = new Prim();
-            sixth.points.Add({index2, index6, index7, index3});
+            sixth.points.Add(index2);
+            sixth.points.Add(index6);
+            sixth.points.Add(index7);
+            sixth.points.Add(index3);
             m_geometry.AddPrim(sixth);
 
             return m_geometry;
