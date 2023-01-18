@@ -41,6 +41,30 @@ namespace MiniDini.Nodes
             m_geometry.Empty();
 
             // here is where we construct the geometry for a grid
+            //stepX and stepY calculate the position of the points
+            float stepX = width/(columns - 1);
+            float stepY = height/(rows - 1);
+            int pointIndex = 0;
+            Point point = new Point();
+            Prim p = new Prim();
+
+            //loop that goes through each point in the grid
+            for (int i = 0; i < rows * columns; i++){
+                //getting the position of each point based on their index
+                point.position = editplane.up * (i/columns * stepY) + editplane.right * (i%columns *stepX);
+                pointIndex = m_geometry.AddPoint(point);
+
+                //making a quad for each 4 points
+                if (i%columns < columns - 1 && i/columns < rows - 1){
+                    p.points.Add(pointIndex);
+                    if (p.points.Count < 9){
+                        m_geometry.AddPrim(p);
+
+                        //clearing the points after they are added
+                        //p.points.Clear();
+                    }
+                }
+            }
 
 
             return m_geometry;

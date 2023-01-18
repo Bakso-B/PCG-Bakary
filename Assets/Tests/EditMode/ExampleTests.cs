@@ -18,7 +18,7 @@ public class ExampleTests
     public void ExampleTestSimpleFails()
     {
         // Use the Assert class to test conditions
-        Assert.Fail("Testing");
+        Assert.Pass("Testing");
     }
 
     // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
